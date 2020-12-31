@@ -10,6 +10,7 @@ let marcadorUsuario;
 let opcionSeleccionadoJugador;
 let strResultado;
 
+
 function mostrarMarcador(){
     let template = `<h2 class = "font">Puntuacion</h2>
         <label class = "font" id = "contador-usuario">${jugador.value}: ${contadorUsuario}</label>
@@ -28,8 +29,8 @@ function startGame(){
     marcadorMaquina = document.getElementById("contador-maquina");
 
     for(let posicion = 0; posicion<eleccionJugador.length; posicion++){
-        eleccionJugador[posicion].addEventListener('click', (e)=>{
-        opcionSeleccionadoJugador = eleccionJugador[posicion].getAttribute("tipo-objeto")
+        eleccionJugador[posicion].addEventListener('click', ()=>{
+        opcionSeleccionadoJugador = parseInt(eleccionJugador[posicion].getAttribute("tipo-objeto"));
             ejecutarOpcion(opcionSeleccionadoJugador);
         })
     }
@@ -38,16 +39,16 @@ function startGame(){
 function ejecutarOpcion(opcionJugador){
     opcionMaquina = Math.floor(Math.random()*3)+1;
     let resultado = juegoPiedraPapelTijera(opcionJugador, opcionMaquina);
-    ocultarOpcionesNoSeleccionadasJugador();
-    ocultarOpcionesNoSeleccionadasMaquina();
+    ocultarOpcionesNoSeleccionadas(opcionMaquina,3,4,5);
+    ocultarOpcionesNoSeleccionadas(opcionJugador, 0,1,2);
     aumentarPuntuacion(resultado);
 
     //Muestra de nuevo las opciones al jugador
     let btnDeNuevo = document.getElementById("btn-de-nuevo");
     btnDeNuevo.classList.remove("display-type-none");
     btnDeNuevo.addEventListener('click', (e)=>{
-        mostrarOpcionesNoSeleccionadasMaquina();
-        mostrarOpcionesNoSeleccionadasJugador();
+        mostrarOpcionesNoSeleccionadas(opcionSeleccionadoJugador, 0, 1, 2);
+        mostrarOpcionesNoSeleccionadas(opcionMaquina, 3, 4, 5);
         btnDeNuevo.classList.add("display-type-none");
     })
     document.getElementById("resultado-partida").innerHTML =strResultado;
@@ -81,76 +82,43 @@ function aumentarPuntuacion(resultado){
     }
 }
 
-
-
-function ocultarOpcionesNoSeleccionadasJugador(){
-    console.log(opcionSeleccionadoJugador)
-    switch(opcionSeleccionadoJugador){
-        case "1":
-            document.querySelectorAll("[tipo-objeto]")[1].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[2].style.visibility="hidden";
-        break;
-        case "2":
-            document.querySelectorAll("[tipo-objeto]")[0].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[2].style.visibility="hidden";
-        break;
-        case "3":
-            document.querySelectorAll("[tipo-objeto]")[0].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[1].style.visibility="hidden";
-        break;
-    }
-}
-function ocultarOpcionesNoSeleccionadasMaquina(){
-    console.log(opcionSeleccionadoJugador)
-    switch(opcionMaquina){
+function ocultarOpcionesNoSeleccionadas(opciones, posicion1, posicion2, posicion3){
+    switch(opciones){
         case 1:
-            document.querySelectorAll("[tipo-objeto]")[4].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[5].style.visibility="hidden";
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.add("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.add("fadeOut");
         break;
         case 2:
-            document.querySelectorAll("[tipo-objeto]")[3].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[5].style.visibility="hidden";
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.add("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.add("fadeOut");
         break;
         case 3:
-            document.querySelectorAll("[tipo-objeto]")[3].style.visibility="hidden";
-            document.querySelectorAll("[tipo-objeto]")[4].style.visibility="hidden";
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.add("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.add("fadeOut");
         break;
     }
+    
 }
 
-
-function mostrarOpcionesNoSeleccionadasMaquina(){
-    console.log(opcionSeleccionadoJugador)
-    switch(opcionMaquina){
+function mostrarOpcionesNoSeleccionadas(opciones, posicion1 ,posicion2, posicion3){
+    switch(opciones){
         case 1:
-            document.querySelectorAll("[tipo-objeto]")[4].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[5].style.visibility="visible";
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.remove("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.remove("fadeOut");
         break;
         case 2:
-            document.querySelectorAll("[tipo-objeto]")[3].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[5].style.visibility="visible";
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.remove("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion3].classList.remove("fadeOut");
         break;
         case 3:
-            document.querySelectorAll("[tipo-objeto]")[3].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[4].style.visibility="visible";
-        break;
-    }
-}
-
-function mostrarOpcionesNoSeleccionadasJugador(){
-    console.log(opcionSeleccionadoJugador)
-    switch(opcionSeleccionadoJugador){
-        case "1":
-            document.querySelectorAll("[tipo-objeto]")[1].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[2].style.visibility="visible";
-        break;
-        case "2":
-            document.querySelectorAll("[tipo-objeto]")[0].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[2].style.visibility="visible";
-        break;
-        case "3":
-            document.querySelectorAll("[tipo-objeto]")[0].style.visibility="visible";
-            document.querySelectorAll("[tipo-objeto]")[1].style.visibility="visible";
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.add("fadeIn");
+            document.querySelectorAll("[tipo-objeto]")[posicion1].classList.remove("fadeOut");
+            document.querySelectorAll("[tipo-objeto]")[posicion2].classList.remove("fadeOut");
         break;
     }
 
