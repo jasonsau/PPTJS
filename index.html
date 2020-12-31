@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>
+            PPT
+        </title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet"> 
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>
+                Piedra, Papel, Tijera
+            </h1>
+        </header>
+
+        <div class = "container-header">
+            <input type = "text" id = "id-jugador" placeholder = "Nombre del Jugador">
+            <p class = "error display-type-none" id = "error-vacio">Error, tiene que ingresar un nombre de usuario</p>
+            <input type = "submit" class = "btn-effect container-header-btn" id = "id-comenzar" value = "Iniciar Juego">
+        </div>
+
+        <div id = "opciones"class = "opcion display-type-none">
+            <div>
+                <div><span class = "texto-span display-type-flex"><strong>Jugador</strong></span></div>
+                <div class= "boton-juego display-type-flex" tipo-objeto = "1">
+                    <img src = "img/tijera.png">
+                </div>
+                <div class = "boton-juego display-type-flex" tipo-objeto = "2">
+                    <img src = "img/roca.png">
+                </div>
+                <div class = "boton-juego display-type-flex" tipo-objeto = "3">
+                    <img  src = "img/papel.png">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span><img src = "img/vs.svg" style = "width: 100px; height:100px"></span>
+                    <br>
+                    <p id = "resultado-partida"></p>
+                    <input id ="btn-de-nuevo" type = "submit" value = "De nuevo" class = "btn-effect container-header-btn display-type-none">
+                </div>
+            </div>
+            <div id = "opcion-maquina">
+                <div><span class = "display-type-flex texto-span"><strong>Maquina</strong></span></div>
+                <div class= "boton-juego display-type-flex" tipo-objeto = "1">
+                    <img src = "img/tijera.png" >
+                </div>
+                <div class = "boton-juego display-type-flex" tipo-objeto = "2">
+                    <img src = "img/roca.png">
+                </div>
+                <div class = "boton-juego display-type-flex" tipo-objeto = "3">
+                    <img  src = "img/papel.png">
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script src = "js/ppt.js"></script>
+    <script src = "js/main.js"></script>
+</html>

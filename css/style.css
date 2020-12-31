@@ -1,0 +1,123 @@
+body{
+    background-color: #dde1ed;
+}
+
+.boton-juego img{
+    height: 50px;
+    width:50px;
+    display: block;
+}
+
+h1{
+    text-align:center;
+    font-family: 'Kalam', cursive;
+    text-transform: uppercase;
+}
+.font{
+    font-family: 'Kalam', cursive;
+    text-transform:uppercase;
+}
+.boton-juego{
+    margin: 10px 100px;
+    height: 100px;
+    border-radius: 10px;
+    width: 120px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -3px -3px 7px #fff,
+    3px 3px 5px rgba(94,104,121,0.7);
+}
+.display-type-flex{
+    display: flex; 
+}
+.display-type-none{
+    display: none;
+}
+.display-type-block{
+    display:block;
+}
+
+#opciones{
+    flex-flow: row;
+}
+
+
+.container-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+.container-header input:first-child{
+    width: 100%;
+    max-width: 220px;
+}
+.container-header-btn {
+    width: 100%;
+    max-width: 240px;
+    height: 54px;
+    padding: 8px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #ff4655;
+    text-align: center;
+    text-transform:uppercase;
+    position: relative;
+    margin: 10px 0;
+    cursor:pointer;
+}
+.container-header input:nth-child(2):hover{
+    color: #119902;
+}
+.texto-span{
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-effect:hover{
+    background-position: left;
+    transition: background-position .4s;
+}
+.btn-effect{
+    background: #303230;
+    background-image: linear-gradient(90deg, #545853 0, #545853 50%, #303230 50%, #303230 100%);
+    background-size: 200%;
+    background-position:right;
+
+}
+.error{
+    color: #fd1f00;
+    font-size: 12;
+    font-family: 'Redressed', cursive;
+}
+
+
+/*Animaciones*/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}                  
